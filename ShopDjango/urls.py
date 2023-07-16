@@ -25,4 +25,5 @@ urlpatterns = [
     path('goodbye/', goodbye, name='goodbye'),
 ]
 
+#
 
