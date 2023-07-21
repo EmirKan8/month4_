@@ -37,6 +37,17 @@ def show_categories(request):
     return render(request, 'categories/categories.html', context=contex_data)
 
 
+def post_detail_view(request, id):
+    if request.method == 'GET':
+        product = Product.objects.get(id=id)
+
+        context_data = {
+            'product': product
+        }
+
+        return render(request, 'products/detail.html', context=context_data)
+
+
 
 
 

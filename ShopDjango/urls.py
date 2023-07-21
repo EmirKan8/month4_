@@ -18,16 +18,24 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static
 
-from posts.views import main_view, products_view, hashtags_view, show_categories
+from ShopDjango import settings
+from posts.views import main_view, products_view, hashtags_view, show_categories, post_detail_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main_view),
+
     path('products/', products_view),
+    path('products/<int:id>/', post_detail_view),
+
     path('hashtags/', hashtags_view),
     path('categories/', show_categories),
 
+
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
