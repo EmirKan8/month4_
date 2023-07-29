@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from posts.models import Product, Hashtag , Category
+from posts.models import Product , Category
 
 admin.site.register(Product)
-admin.site.register(Hashtag)
+
 admin.site.register(Category)

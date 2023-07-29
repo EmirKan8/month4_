@@ -8,9 +8,12 @@ class Category(models.Model):
     icon = models.ImageField(upload_to='category_icons/')
 
 
-class Hashtag(models.Model):
+class Review(models.Model):
     title = models.CharField(max_length=64)
     created_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
 
 
 class Product(models.Model):
@@ -21,6 +24,5 @@ class Product(models.Model):
     modified_date = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE,default=None, null=True)
 
-    '''hashtags'''
-    hashtags = models.ManyToManyField(Hashtag)
-
+    def __str__(self):
+        return f'{self.title}'
