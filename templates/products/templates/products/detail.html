@@ -1,0 +1,47 @@
+{% extends 'layouts/index.html' %}
+
+{% block content %}
+    <style type="text/css">
+        .post {
+            width: 80%;
+            margin-left: 10%;
+            padding: 10px;
+        }
+        .image > img {
+            width: 100%;
+        }
+        .dates {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    <div class="post">
+        <div class="image">
+            <img src="/media/{{ product.image }}/" alt="">
+        </div>
+        <div class="info">
+            <h1>{{ product.title }} Rate: {{ product.rate }}</h1>
+            <h4>{{ product.description }}</h4>
+            <div class="dates">
+                <h4>{{ product.created_date }}</h4>
+                <h4>{{ product.modified_date }}</h4>
+            </div>
+            <div class="create_comment">
+                    <form action="/shops/{{ product.id }}/" method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input style="height: 40px; width: 150px;" type="submit" value="Add comment">
+                    </form>
+            </div>
+                    <div class="comments">
+            {% for comment in comments %}
+                <div class="comment_block">
+                    <h5>{{ comment.text }}</h5>
+                </div>
+            {% endfor %}
+             </div>
+
+
+        </div>
+    </div>
+{% endblock %}
